@@ -1,0 +1,25 @@
+{
+    "Application": {
+        "ApiKey": "XXXXXX"
+    },
+    "Bases": [{
+            "Name": "Snips",
+            "ID": "appi3zI6j2ApLlCJ0"
+        }, {
+            "Name": "Financials",
+            "ID": "appOZIellooEdRIHM"
+        },
+        {
+            "Name": "Adam the Automator",
+            "ID": "app0vOj325zSmGAC4"
+        },
+        {
+            "Name": "Articles",
+            "ID": "applhcnlc2SXacpR7"
+        },
+        {
+            "Name": "Courses",
+            "ID": "appeVWgBM1XAmjF6L"
+        }
+    ]
+}
