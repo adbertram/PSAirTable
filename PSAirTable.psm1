@@ -158,7 +158,11 @@ function Find-Record {
 
 		[Parameter()]
 		[ValidateNotNullOrEmpty()]
-		[string]$View
+		[string]$View,
+
+		[Parameter()]
+		[ValidateNotNullOrEmpty()]
+		[int]$MaxRecords = 100
 		
 	)
 
@@ -176,6 +180,9 @@ function Find-Record {
 	}
 	if ($PSBoundParameters.ContainsKey('View')) {
 		$httpBody['view'] = $View
+	}
+	if ($PSBoundParameters.ContainsKey('MaxRecords')) {
+		$httpBody['maxRecords'] = $MaxRecords
 	}
 	if ($httpBody.Keys -gt 0) {
 		$invParams.HttpBody = $httpBody
