@@ -158,7 +158,19 @@ function Find-Record {
 
 		[Parameter()]
 		[ValidateNotNullOrEmpty()]
-		[string]$View
+		[string]$View,
+
+		[Parameter()]
+		[ValidateNotNullOrEmpty()]
+		[int]$MaxRecords = 100,
+
+		[Parameter()]
+		[ValidateSet('asc','desc')]
+		[string]$SortDirection,
+
+		[Parameter()]
+		[ValidateNotNullOrEmpty()]
+		[string]$SortField
 		
 	)
 
@@ -176,6 +188,15 @@ function Find-Record {
 	}
 	if ($PSBoundParameters.ContainsKey('View')) {
 		$httpBody['view'] = $View
+	}
+	if ($PSBoundParameters.ContainsKey('MaxRecords')) {
+		$httpBody['maxRecords'] = $MaxRecords
+	}
+	if ($PSBoundParameters.ContainsKey('SortField')) {
+		$httpBody['sort[0][field]'] = $SortField
+		if ($PSBoundParameters.ContainsKey('SortDirection')) {
+			$httpBody['sort[0][direction]'] = $SortDirection
+		}
 	}
 	if ($httpBody.Keys -gt 0) {
 		$invParams.HttpBody = $httpBody
