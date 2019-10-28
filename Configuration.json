@@ -2,5 +2,8 @@
     "Application": {
         "ApiKey": "XXXXXX"
     },
-    "Bases": [{}]
+    "Bases": [{
+        "Name": "<name of base here>",
+        "ID": "<id of base here>"
+    }]
 }
