@@ -1,6 +1,6 @@
 @{
     RootModule        = 'PSAirTable.psm1'
-    ModuleVersion     = '*'
+    ModuleVersion     = '1.0'
     GUID              = 'd7226345-7229-44df-a16d-60c1bb301b94'
     Author            = 'Adam Bertram'
     CompanyName       = 'Adam the Automator, LLC'
