@@ -12,7 +12,6 @@ try {
         'PSAirTable\\\.git'
         'PSAirTable\\\.nuspec'
         'PSAirTable\\README\.md'
-        'PSAirTable\\TestResults\.xml'
     )
     $exclude = $excludeFromPublish -join '|'
     Get-ChildItem -Path $env:APPVEYOR_BUILD_FOLDER -Recurse | where { $_.FullName -match $exclude } | Remove-Item -Force -Recurse
