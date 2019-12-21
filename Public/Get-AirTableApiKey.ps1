@@ -31,8 +31,6 @@ function Get-AirTableApiKey {
         if ($PSBoundParameters.ContainsKey('ApiKey')) {
             $script:AirTableApiKey = $ApiKey
             $ApiKey
-        } elseif (Get-Variable -Name AirTableApiKey -Scope Script -ErrorAction 'Ignore') {
-            $script:AirTableApiKey
         } elseif (-not ($encApiKey = (Get-PSAirTableConfiguration).Application.ApiKey)) {
             throw 'No API key found in configuration.'
         } else {
