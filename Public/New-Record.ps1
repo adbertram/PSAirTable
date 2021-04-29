@@ -49,7 +49,10 @@ function New-Record {
     $invParams = @{
         Uri      = $uri
         Method   = 'POST'
-        HttpBody = @{ 'fields' = $Fields }
+        HttpBody = @{
+	    'fields' = $Fields
+	    'typecast' = $True
+	}
     }
 
     $targetMsg = "New AirTable Record in table [$($Table)]"
