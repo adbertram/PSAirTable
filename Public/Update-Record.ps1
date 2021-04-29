@@ -75,7 +75,10 @@ function Update-Record {
         $invParams = @{
             Uri      = $uri
             Method   = 'PATCH'
-            HttpBody = @{ 'fields' = $Fields }
+            HttpBody = @{
+	    	'fields' = $Fields
+		'typecast' = True
+	    }
         }
 
         $targetMsg = "AirTable Record ID [$($InputObject.'Record ID')] in table [$($InputObject.Table)]"
