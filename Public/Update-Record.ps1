@@ -77,7 +77,7 @@ function Update-Record {
             Method   = 'PATCH'
             HttpBody = @{
 	    	'fields' = $Fields
-		'typecast' = True
+		'typecast' = $True
 	    }
         }
 
