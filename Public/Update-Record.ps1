@@ -79,7 +79,10 @@ function Update-Record {
         $invParams = @{
             Uri      = $uri
             Method   = 'PATCH'
-            HttpBody = @{ 'fields' = $Fields }
+            HttpBody = @{
+	    	'fields' = $Fields
+		'typecast' = $True
+	    }
         }
         if ($PSBoundParameters.ContainsKey('ApiKey')) {
             $invParams.ApiKey = $ApiKey

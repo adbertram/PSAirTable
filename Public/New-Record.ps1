@@ -53,7 +53,10 @@ function New-Record {
     $invParams = @{
         Uri      = $uri
         Method   = 'POST'
-        HttpBody = @{ 'fields' = $Fields }
+        HttpBody = @{
+	    'fields' = $Fields
+	    'typecast' = $True
+	}
     }
     if ($PSBoundParameters.ContainsKey('ApiKey')) {
         $invParams.ApiKey = $ApiKey
