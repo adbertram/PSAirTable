@@ -18,7 +18,11 @@ function Remove-Record {
     (
         [Parameter(Mandatory, ValueFromPipeline, ParameterSetName = 'ByObject')]
         [ValidateNotNullOrEmpty()]
-        [pscustomobject]$InputObject
+        [pscustomobject]$InputObject,
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string]$ApiKey
     )
 
 
@@ -29,6 +33,9 @@ function Remove-Record {
     $invParams = @{
         Uri    = $uri
         Method = 'DELETE'
+    }
+    if ($PSBoundParameters.ContainsKey('ApiKey')) {
+        $invParams.ApiKey = $ApiKey
     }
 
     $targetMsg = "AirTable Record ID [$($InputObject.'Record ID')] in table [$($InputObject.Table)]"

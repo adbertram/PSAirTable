@@ -56,7 +56,11 @@ function Update-Record {
         [ValidateNotNullOrEmpty()]
         [hashtable]$Fields,
 
-        [switch]$PassThru
+        [switch]$PassThru,
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string]$ApiKey
     )
 
     begin {
@@ -76,6 +80,9 @@ function Update-Record {
             Uri      = $uri
             Method   = 'PATCH'
             HttpBody = @{ 'fields' = $Fields }
+        }
+        if ($PSBoundParameters.ContainsKey('ApiKey')) {
+            $invParams.ApiKey = $ApiKey
         }
 
         $targetMsg = "AirTable Record ID [$($InputObject.'Record ID')] in table [$($InputObject.Table)]"

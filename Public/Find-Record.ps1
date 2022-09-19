@@ -59,7 +59,11 @@ function Find-Record {
 
         [Parameter()]
         [ValidateNotNullOrEmpty()]
-        [string]$SortField
+        [string]$SortField,
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string]$ApiKey
 		
     )
 
@@ -71,6 +75,10 @@ function Find-Record {
     $invParams = @{
         Uri = $Uri
     }
+    if ($PSBoundParameters.ContainsKey('ApiKey')) {
+        $invParams.ApiKey = $ApiKey
+    }
+    
     $httpBody = @{ }
     if ($PSBoundParameters.ContainsKey('FilterFormula')) {
         $httpBody['filterByFormula'] = $FilterFormula

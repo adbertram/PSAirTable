@@ -36,7 +36,11 @@ function New-Record {
         [ValidateNotNullOrEmpty()]
         [hashtable]$Fields,
 
-        [switch]$PassThru
+        [switch]$PassThru,
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string]$ApiKey
     )
 
 
@@ -50,6 +54,9 @@ function New-Record {
         Uri      = $uri
         Method   = 'POST'
         HttpBody = @{ 'fields' = $Fields }
+    }
+    if ($PSBoundParameters.ContainsKey('ApiKey')) {
+        $invParams.ApiKey = $ApiKey
     }
 
     $targetMsg = "New AirTable Record in table [$($Table)]"
