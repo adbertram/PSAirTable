@@ -69,10 +69,11 @@ function Update-Record {
 	
     process {
         if ($PSCmdlet.ParameterSetName -eq 'ById') {
-            $filterFormula = 'RECORD_ID()="{0}"' -f $Id
-            $InputObject = Find-Record -BaseName $BaseIdentity -Table $Table -FilterFormula $filterFormula
-        } else {
-
+            $InputObject = [pscustomobject]@{
+                'Base ID' = $BaseIdentity
+                'Table' = $Table
+                'Record ID' = $Id
+            }
         }
         $uri = BuildUriString -BaseId $InputObject.'Base ID' -Table $InputObject.Table -RecordId $InputObject.'Record ID'
 
@@ -80,9 +81,9 @@ function Update-Record {
             Uri      = $uri
             Method   = 'PATCH'
             HttpBody = @{
-	    	'fields' = $Fields
-		'typecast' = $True
-	    }
+	    	    'fields' = $Fields
+		        'typecast' = $True
+	        }
         }
         if ($PSBoundParameters.ContainsKey('ApiKey')) {
             $invParams.ApiKey = $ApiKey
