@@ -1,6 +1,6 @@
 {
     "Application": {
-        "ApiKey": "XXXXXX"
+        "PersonalAccessToken": "XXXXXX"
     },
     "Bases": [{
         "Name": "<name of base here>",

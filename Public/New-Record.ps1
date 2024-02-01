@@ -40,7 +40,7 @@ function New-Record {
 
         [Parameter()]
         [ValidateNotNullOrEmpty()]
-        [string]$ApiKey
+        [string]$PersonalAccessToken
     )
 
 
@@ -58,8 +58,8 @@ function New-Record {
 	    'typecast' = $True
 	}
     }
-    if ($PSBoundParameters.ContainsKey('ApiKey')) {
-        $invParams.ApiKey = $ApiKey
+    if ($PSBoundParameters.ContainsKey('PersonalAccessToken')) {
+        $invParams.PersonalAccessToken = $PersonalAccessToken
     }
 
     $targetMsg = "New AirTable Record in table [$($Table)]"

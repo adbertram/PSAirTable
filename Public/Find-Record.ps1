@@ -63,7 +63,7 @@ function Find-Record {
 
         [Parameter()]
         [ValidateNotNullOrEmpty()]
-        [string]$ApiKey
+        [string]$PersonalAccessToken
 		
     )
 
@@ -75,8 +75,8 @@ function Find-Record {
     $invParams = @{
         Uri = $Uri
     }
-    if ($PSBoundParameters.ContainsKey('ApiKey')) {
-        $invParams.ApiKey = $ApiKey
+    if ($PSBoundParameters.ContainsKey('PersonalAccessToken')) {
+        $invParams.PersonalAccessToken = $PersonalAccessToken
     }
     
     $httpBody = @{ }

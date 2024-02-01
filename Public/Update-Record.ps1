@@ -60,7 +60,7 @@ function Update-Record {
 
         [Parameter()]
         [ValidateNotNullOrEmpty()]
-        [string]$ApiKey
+        [string]$PersonalAccessToken
     )
 
     begin {
@@ -85,8 +85,8 @@ function Update-Record {
 		        'typecast' = $True
 	        }
         }
-        if ($PSBoundParameters.ContainsKey('ApiKey')) {
-            $invParams.ApiKey = $ApiKey
+        if ($PSBoundParameters.ContainsKey('PersonalAccessToken')) {
+            $invParams.PersonalAccessToken = $PersonalAccessToken
         }
 
         $targetMsg = "AirTable Record ID [$($InputObject.'Record ID')] in table [$($InputObject.Table)]"

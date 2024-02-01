@@ -9,7 +9,7 @@ Once this module has been imported:
 
 2. Generate your AirTable API key [here](https://airtable.com/account).
 
-6. Run `Save-AirtableApiKey -ApiKey XXXXXXXX` to save your API key encrypted in the Configuration.json file.
+6. Run `Save-AirTablePersonalAccessToken -PersonalAccessToken XXXXXXXX` to save your API personal access token encrypted in the Configuration.json file.
 
 3. Create one or more AirTable [bases](https://support.airtable.com/hc/en-us/articles/202576419-Introduction-to-Airtable-bases).
 

@@ -41,14 +41,14 @@ function InvokeAirTableApiCall {
 
         [Parameter()]
         [ValidateNotNullOrEmpty()]
-        [string]$ApiKey = (Get-AirTableApiKey)
+        [string]$PersonalAccessToken = (Get-AirTablePersonalAccessToken)
     )
 
     $ErrorActionPreference = 'Stop'
 
     try {
         $headers = @{
-            'Authorization' = "Bearer $ApiKey"
+            'Authorization' = "Bearer $PersonalAccessToken"
         }
 		
         $invRestParams = @{

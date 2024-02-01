@@ -22,7 +22,7 @@ function Remove-Record {
 
         [Parameter()]
         [ValidateNotNullOrEmpty()]
-        [string]$ApiKey
+        [string]$PersonalAccessToken
     )
 
 
@@ -34,8 +34,8 @@ function Remove-Record {
         Uri    = $uri
         Method = 'DELETE'
     }
-    if ($PSBoundParameters.ContainsKey('ApiKey')) {
-        $invParams.ApiKey = $ApiKey
+    if ($PSBoundParameters.ContainsKey('PersonalAccessToken')) {
+        $invParams.PersonalAccessToken = $PersonalAccessToken
     }
 
     $targetMsg = "AirTable Record ID [$($InputObject.'Record ID')] in table [$($InputObject.Table)]"
