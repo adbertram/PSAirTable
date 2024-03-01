@@ -1,7 +1,10 @@
 environment:
   nuget_apikey:
     secure: T7273/UZmvfIDB5EerJHAtNuo6/KoV217EDo+0CWK1J5dLfwyUgxEgUg6x1wYOX7
-image: WMF 5
+image:
+  - macOS
+  - Ubuntu
+  - Visual Studio 2022
 install:
   - ps: .\buildscripts\install.ps1
 build_script:
