@@ -2,8 +2,6 @@ environment:
   nuget_apikey:
     secure: 4mP7okXenU+D3K718G0GrolqXp1zKqJYIFzZb/12NiWvDr5c49ztncZ/NKvIh5FB
 image:
-  - macOS
-  - Ubuntu
   - Visual Studio 2022
 install:
   - ps: .\buildscripts\install.ps1
