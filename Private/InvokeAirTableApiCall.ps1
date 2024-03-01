@@ -52,9 +52,10 @@ function InvokeAirTableApiCall {
         }
 		
         $invRestParams = @{
-            Method  = $Method
-            Headers = $headers
-            Uri     = $Uri
+            Method             = $Method
+            Headers            = $headers
+            Uri                = $Uri
+            StatusCodeVariable = 'irmStatus'
         }
 
         switch ($Method) {
@@ -76,7 +77,15 @@ function InvokeAirTableApiCall {
             }
         }
 
-        $response = Invoke-RestMethod @invRestParams
+        try {
+            $response = Invoke-RestMethod @invRestParams
+            if ($irmStatus -ne 200) {
+                throw $response
+            }
+        } catch {
+            $err = ($_.errordetails.message | ConvertFrom-Json).error
+            throw "The Airtable API returned a [$($err.type)] error with message: [$($err.message)]"
+        }
 		
         if ('records' -in $response.PSObject.Properties.Name) {
             $baseId = $Uri.split('/')[4]
