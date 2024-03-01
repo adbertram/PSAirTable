@@ -17,12 +17,11 @@ function Get-PSAirTableConfiguration {
     $ErrorActionPreference = 'Stop'
 
     try {
-        $configJsonPath = "$WorkingDir\Configuration.json"
-        if (-not (Test-Path -Path $configJsonPath)) {
-            throw 'The required Configuration.json file could not be found.'
+        if (-not (Test-Path -Path $script:configFilePath)) {
+            throw "The required configuration.json file could not be found in the required location of [$($script:configFilePath)]."
         }
 
-        Get-Content -Path $configJsonPath -Raw | ConvertFrom-Json
+        Get-Content -Path $script:configFilePath -Raw | ConvertFrom-Json
     } catch {
         $PSCmdlet.ThrowTerminatingError($_)
     }
