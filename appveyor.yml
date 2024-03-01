@@ -1,6 +1,6 @@
 environment:
   nuget_apikey:
-    secure: T7273/UZmvfIDB5EerJHAtNuo6/KoV217EDo+0CWK1J5dLfwyUgxEgUg6x1wYOX7
+    secure: 4mP7okXenU+D3K718G0GrolqXp1zKqJYIFzZb/12NiWvDr5c49ztncZ/NKvIh5FB
 image:
   - macOS
   - Ubuntu
