@@ -26,6 +26,11 @@ function Find-Record {
 
 		.PARAMETER View
 			An optional string parameter representing a table view to limit results to.
+
+   		.PARAMETER CharSet
+     			A string value representing charset like utf-8, which is used for the http-request.
+			Possible charsets:
+			https://www.iana.org/assignments/character-sets/character-sets.xhtml
 	
 	#>
     [OutputType('pscustomobject')]
@@ -61,6 +66,10 @@ function Find-Record {
         [ValidateNotNullOrEmpty()]
         [string]$SortField,
 
+  	[Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string]$CharSet,
+
         [Parameter()]
         [ValidateNotNullOrEmpty()]
         [string]$PersonalAccessToken
@@ -94,6 +103,9 @@ function Find-Record {
         if ($PSBoundParameters.ContainsKey('SortDirection')) {
             $httpBody['sort[0][direction]'] = $SortDirection
         }
+    }
+    if($CharSet){
+  	$invParams.CharSet = $CharSet
     }
     if ($httpBody.Keys -gt 0) {
         $invParams.HttpBody = $httpBody
