@@ -28,7 +28,7 @@ function InvokeAirTableApiCall {
 			A string value representing the HTTP verb (method) to send to the API. This defaults to using GET.
    
    		.PARAMETER CharSet
-     			Define charset like utf-8
+     			A string value representing charset like utf-8, which is used for the http-request
 			Possible charsets:
 			https://www.iana.org/assignments/character-sets/character-sets.xhtml
 	
