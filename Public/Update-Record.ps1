@@ -28,6 +28,11 @@ function Update-Record {
 		.PARAMETER Fields
 			A hashtable value representing all of the record's fields to update. Each key in the hashtable is the
 			field name and each corresponding value is the value to update the field to.
+
+   		.PARAMETER CharSet
+     			A string value representing charset like utf-8, which is used for the http-request.
+			Possible charsets:
+			https://www.iana.org/assignments/character-sets/character-sets.xhtml
 	
 	#>
     [OutputType('void')]
@@ -55,6 +60,10 @@ function Update-Record {
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
         [hashtable]$Fields,
+
+ 	[Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string]$CharSet,
 
         [switch]$PassThru,
 
@@ -88,6 +97,9 @@ function Update-Record {
         if ($PSBoundParameters.ContainsKey('PersonalAccessToken')) {
             $invParams.PersonalAccessToken = $PersonalAccessToken
         }
+	if($CharSet){
+            $invParams.CharSet = $CharSet
+    	}
 
         $targetMsg = "AirTable Record ID [$($InputObject.'Record ID')] in table [$($InputObject.Table)]"
         $actionMsg = "Update fields [$($Fields.Keys -join ',')] to [$($Fields.Values -join ',')]"

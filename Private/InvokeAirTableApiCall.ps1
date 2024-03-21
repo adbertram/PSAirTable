@@ -13,6 +13,11 @@ function InvokeAirTableApiCall {
 
 			Queries the AirTable URI and passes the HTTP body to the API using the POST method.
 
+     		.EXAMPLE
+			PS> InvokeAirTableApiCall -Uri 'https://api.airtable.com/v0/Fruit' -HttpBody @{ filterByFormula = "{Name}='Apple'" } -Method POST -CharSet 'utf-8'
+
+			Queries the AirTable URI and passes the HTTP body to the API using the POST method with charset 'utf-8'
+
 		.PARAMETER Uri
 			A string value representing the API endpoint URI.
 
@@ -21,6 +26,11 @@ function InvokeAirTableApiCall {
 
 		.PARAMETER Method
 			A string value representing the HTTP verb (method) to send to the API. This defaults to using GET.
+   
+   		.PARAMETER CharSet
+     			A string value representing charset like utf-8, which is used for the http-request.
+			Possible charsets:
+			https://www.iana.org/assignments/character-sets/character-sets.xhtml
 	
 	#>
     [OutputType('pscustomobject')]
@@ -34,6 +44,10 @@ function InvokeAirTableApiCall {
         [Parameter()]
         [ValidateNotNullOrEmpty()]
         [hashtable]$HttpBody,
+
+ 	[Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string]$CharSet,
 
         [Parameter()]
         [ValidateNotNullOrEmpty()]
@@ -66,7 +80,12 @@ function InvokeAirTableApiCall {
                 break
             }
             { $_ -in 'PATCH', 'POST', 'DELETE' } {
-                $invRestParams.ContentType = 'application/json'
+	    	if($CharSet)
+                	$invRestParams.ContentType = 'application/json; charset=' + $CharSet
+		 }
+   		else{
+     			$invRestParams.ContentType = 'application/json'
+		}
                 if ($PSBoundParameters.ContainsKey('HttpBody')) {
                     $invRestParams.Body = (ConvertTo-Json $HttpBody)
                 }
