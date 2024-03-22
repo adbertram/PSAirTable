@@ -80,7 +80,7 @@ function InvokeAirTableApiCall {
                 break
             }
             { $_ -in 'PATCH', 'POST', 'DELETE' } {
-	    	if($CharSet)
+	    	if($CharSet){
                 	$invRestParams.ContentType = 'application/json; charset=' + $CharSet
 		 }
    		else{
